@@ -1,18 +1,20 @@
 provider "aws" {
-  region = local.region
+  region  = local.region
+  profile = "kodecloud"
 }
 
 data "aws_availability_zones" "available" {}
 
 locals {
   name   = basename(path.cwd)
-  region = "us-west-1"
+  region = "us-east-1"
 
   vpc_cidr = "10.0.0.0/16"
   azs      = slice(data.aws_availability_zones.available.names, 0, 3)
 
   tags = {
-    Blueprint  = local.name
+    Blueprint = local.name
+    author    = "Brian-Vo"
   }
 }
 
@@ -40,8 +42,10 @@ module "eks" {
 
   eks_managed_node_groups = {
     initial = {
-      instance_types = ["t2.medium"]
+      instance_types = ["t2.small"]
 
+      disk_size    = 30
+      volume_type  = "gp2"
       min_size     = 1
       max_size     = 3
       desired_size = 2
@@ -59,9 +63,8 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.0.0"
 
-  name = local.name
-  cidr = local.vpc_cidr
-
+  name            = local.name
+  cidr            = local.vpc_cidr
   azs             = local.azs
   private_subnets = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 4, k)]
 
