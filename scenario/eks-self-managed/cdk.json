@@ -1,5 +1,6 @@
 {
   "app": "npx ts-node --prefer-ts-exts bin/eks-self-managed.ts",
+  "profile": "kodecloud",
   "watch": {
     "include": [
       "**"
