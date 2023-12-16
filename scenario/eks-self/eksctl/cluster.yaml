@@ -57,8 +57,8 @@ cloudWatch:
     # By default, log data is stored in CloudWatch Logs indefinitely.
     logRetentionInDays: 60
 
-iam:
-  withOIDC: true
+# iam:
+#   withOIDC: true
 
 addons:
   - name: vpc-cni
