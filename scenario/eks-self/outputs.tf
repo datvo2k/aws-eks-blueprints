@@ -155,3 +155,11 @@ output "aws_iam_openid_connect_provider_extract_from_arn" {
   description = "AWS IAM Open ID Connect Provider extract from ARN"
   value       = local.aws_iam_oidc_connect_provider_extract_from_arn
 }
+
+// ----------------------------------------------------------------------------
+// Output the Autoscaler
+// ----------------------------------------------------------------------------
+output "cluster_autoscaler_iam_role_arn" {
+  description = "Cluster Autoscaler IAM Role ARN"
+  value       = aws_iam_role.cluster_autoscaler_iam_role.arn
+}
