@@ -121,11 +121,11 @@ variable "cluster_endpoint_public_access_cidrs" {
 // Variables for remote state
 // ----------------------------------------------------------------------------
 variable "bucket_name" {
-  type        = string
-  default     = "terraform-on-aws-eks"
+  type    = string
+  default = "terraform-on-aws-eks"
 }
 
 variable "key_tfstate" {
-  type        = string
-  default     = "dev/eks-cluster/terraform.tfstate"
+  type    = string
+  default = "dev/eks-cluster/terraform.tfstate"
 }
