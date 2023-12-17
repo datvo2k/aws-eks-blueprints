@@ -9,7 +9,7 @@ locals {
   owners      = var.business_divsion
   environment = var.environment
 
-  aws_iam_oidc_connect_provider_extract_from_arn = element(split("oidc-provider/", "${aws_iam_openid_connect_provider.oidc_provider.arn}"), 1)
+  # aws_iam_oidc_connect_provider_extract_from_arn = element(split("oidc-provider/", "${aws_iam_openid_connect_provider.oidc_provider.arn}"), 1)
 
   common_tags = {
     owners      = local.owners
